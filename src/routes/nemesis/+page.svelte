@@ -62,7 +62,8 @@
   </Modal>
 
   <div
-    class="py-4 fixed bottom-0 left-0 w-full flex flex-row overflow-y-scroll gap-2 bg-red-500 bg-opacity-20"
+    class:py-4={mngr.gs.inPlay.length > 0}
+    class="fixed bottom-0 left-0 w-full flex flex-row overflow-y-scroll gap-2 bg-red-500 bg-opacity-20"
   >
     {#each mngr.gs.inPlay as intruder}
       <EnemyInPlay enemy={intruder} />
