@@ -70,9 +70,6 @@
       <EnemyInPlay enemy={intruder} />
     {/each}
   </div>
-  <!-- <div class="whitespace-pre-wrap text-white">
-    {JSON.stringify(mngr.gs, null, 2)}
-  </div> -->
 </div>
 
 <style lang="postcss">
