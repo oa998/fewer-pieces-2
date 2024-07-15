@@ -30,7 +30,7 @@
       {DevelopmentRules[develop.name].message}
     </div>
     <button
-      class="absolute top-2 right-2 rounded-xl bg-red-700 text-white text-3xl p-2"
+      class="absolute top-2 right-2 rounded-xl bg-red-700 text-white text-xl p-2"
       onclick={() => mngr.developEnd()}>Ｘ</button
     >
   </div>
