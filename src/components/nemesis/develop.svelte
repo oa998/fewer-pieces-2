@@ -11,7 +11,7 @@
 
 {#if develop}
   <div
-    class="w-full grid place-items-center bg-gray-800 bg-opacity-50 py-10 rounded-xl gap-6 relative max-h-[40vh] landscape:grid-cols-[min-content_50vw] landscape:justify-center"
+    class="w-full grid place-items-center bg-gray-800 bg-opacity-50 py-10 rounded-xl gap-6 relative grid-cols-[min-content_1fr] landscape:grid-cols-[min-content_50vw] landscape:justify-center"
   >
     <div class="w-48 landscape:w-32">
       <div class="relative">
