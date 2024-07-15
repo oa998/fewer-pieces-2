@@ -11,9 +11,9 @@
 
 {#if develop}
   <div
-    class="w-full grid place-items-center bg-gray-800 bg-opacity-50 py-10 rounded-xl gap-6 relative max-h-[40vh]"
+    class="w-full grid place-items-center bg-gray-800 bg-opacity-50 py-10 rounded-xl gap-6 relative max-h-[40vh] landscape:grid-cols-[min-content_50vw] landscape:justify-center"
   >
-    <div class="max-w-48 landscape:max-w-32">
+    <div class="w-48 landscape:w-32">
       <div class="relative">
         <img
           src={`${base}/nemesis/${develop.src}`}
@@ -35,3 +35,10 @@
     >
   </div>
 {/if}
+
+<style lang="postcss">
+  .grid-cols-sizing {
+    grid-template-columns: min-content 1fr;
+    background-color: orange;
+  }
+</style>
