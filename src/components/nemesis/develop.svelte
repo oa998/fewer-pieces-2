@@ -21,7 +21,7 @@
           class="rounded-full"
         />
         <span
-          class="bg-yellow-300 rounded-full text-black absolute right-0 bottom-0 text-5xl font-mono px-2 border border-yellow-700"
+          class="bg-yellow-300 rounded-full text-black absolute right-0 bottom-0 text-xl font-mono px-2 border border-yellow-700"
           >{develop.threat}</span
         >
       </div>
