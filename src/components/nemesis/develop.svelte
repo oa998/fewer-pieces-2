@@ -13,7 +13,7 @@
   <div
     class="w-full grid place-items-center bg-gray-800 bg-opacity-50 py-10 rounded-xl gap-6 relative grid-cols-[min-content_1fr] landscape:grid-cols-[min-content_50vw] landscape:justify-center"
   >
-    <div class="w-32 portrait:pl-6">
+    <div class="w-32 portrait:pl-6 pt-8">
       <div class="relative">
         <img
           src={`${base}/nemesis/${develop.src}`}
@@ -26,11 +26,11 @@
         >
       </div>
     </div>
-    <div class="text-white text-center px-20 text-lg">
+    <div class="text-white text-center text-lg">
       {DevelopmentRules[develop.name].message}
     </div>
     <button
-      class="absolute top-2 right-2 rounded-xl bg-red-700 text-white text-xl p-2"
+      class="absolute top-2 right-2 rounded bg-red-700 text-white text-xl aspect-square w-10 grid place-items-center"
       onclick={() => mngr.developEnd()}>Ｘ</button
     >
   </div>

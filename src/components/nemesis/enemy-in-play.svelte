@@ -15,10 +15,7 @@
   const mngr = getStateManager();
 </script>
 
-<button
-  class="p-4 rounded-3xl min-w-32 max-w-32"
-  onclick={() => (clicked = true)}
->
+<button class="p-4 rounded-3xl w-[15vh]" onclick={() => (clicked = true)}>
   {#if enemy}
     <div class="relative">
       <img
@@ -28,7 +25,7 @@
         style={`box-shadow: 0 0 35px ${enemy.color}, 0 0 20px ${enemy.color};`}
       />
       <span
-        class="bg-red-800 rounded-full text-white absolute right-0 bottom-0 text-3xl font-mono px-2 border border-red-500"
+        class="bg-red-800 rounded-full text-white absolute right-0 bottom-0 text-2xl font-mono px-2 border border-red-500"
         >{enemy.damage}</span
       >
     </div>

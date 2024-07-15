@@ -27,13 +27,13 @@
 
   <div class="flex flex-col gap-2 absolute top-2 right-2">
     <NewGame
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-sm"
+      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-xs"
     />
     <ViewBag
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-sm"
+      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-xs"
     />
     <Log
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-sm"
+      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-xs"
     />
   </div>
   <div class="w-full p-10 gap-10 flex flex-col">
