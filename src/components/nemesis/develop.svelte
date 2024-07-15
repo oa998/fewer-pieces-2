@@ -26,7 +26,7 @@
         >
       </div>
     </div>
-    <div class="text-white text-center px-20 text-xl">
+    <div class="text-white text-center px-20 text-lg">
       {DevelopmentRules[develop.name].message}
     </div>
     <button
