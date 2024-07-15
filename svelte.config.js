@@ -19,7 +19,7 @@ export default {
       "$lib/*": "src/lib",
     },
     paths: {
-      // base: '/svelte-uber2u'
+      base: "/fewer-pieces-2",
     },
   },
   preprocess: vitePreprocess(),
