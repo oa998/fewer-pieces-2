@@ -21,7 +21,7 @@
   }}
 >
   <div
-    class="bg-black p-20 text-white text-xl flex flex-col gap-14 max-h-[80lvh] overflow-y-scroll border-red-950 border-[28px]"
+    class="bg-black p-20 text-white text-xl flex flex-col gap-14 max-h-[80lvh] max-w-4xl overflow-y-scroll border-red-950 border-[28px]"
     style="border-style:ridge;"
   >
     {#each mngr.gs.log as log}

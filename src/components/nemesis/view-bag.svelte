@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import Modal from "$components/modal.svelte";
   import {
     getStateManager,
@@ -89,8 +90,7 @@
           >
             <div class="flex flex-col">
               <img
-                data-src={`nemesis/${images[name]}`}
-                src={`nemesis/${images[name]}`}
+                src={`${base}/nemesis/${images[name]}`}
                 alt={name}
                 class="max-w-20"
               />
@@ -110,7 +110,7 @@
           >
             <div class="flex flex-col">
               <img
-                src={`/nemesis/${images[name]}`}
+                src={`${base}/nemesis/${images[name]}`}
                 alt={name}
                 class="max-w-20"
               />
@@ -133,7 +133,7 @@
           >
             <div class="flex flex-col">
               <img
-                src={`/nemesis/${images[name]}`}
+                src={`${base}/nemesis/${images[name]}`}
                 alt={name}
                 class="max-w-20"
               />

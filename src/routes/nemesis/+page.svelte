@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import Modal from "$components/modal.svelte";
   import Develop from "$components/nemesis/develop.svelte";
   import Encounter from "$components/nemesis/encounter.svelte";
@@ -18,27 +19,27 @@
 >
   <div class="relative">
     <img
-      src="/nemesis/nemesis2.webp"
+      src={`${base}/nemesis/nemesis2.webp`}
       alt="nemesis"
-      class={`w-full object-cover h-[10lvh]`}
+      class={`w-full object-cover h-[15lvh]`}
     />
   </div>
 
   <div class="flex flex-col gap-2 absolute top-2 right-2">
     <NewGame
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded"
+      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-sm"
     />
     <ViewBag
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded"
+      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-sm"
     />
     <Log
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded"
+      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-sm"
     />
   </div>
   <div class="w-full p-10 gap-10 flex flex-col">
     <button
       disabled={mngr.gs.developing.length > 0}
-      class="border p-2 w-full text-center rounded-xl text-5xl bg-blue-900 bg-opacity-50 text-yellow-500 border-yellow-500 disabled:brightness-50"
+      class="border p-2 w-full text-center rounded-xl text-2xl bg-blue-900 bg-opacity-50 text-yellow-500 border-yellow-500 disabled:brightness-50"
       on:click={() => {
         mngr.develop();
       }}>Develop</button
@@ -47,7 +48,7 @@
       <Develop />
     {/if}
     <button
-      class="border p-2 w-full text-center rounded-xl text-5xl bg-red-900 bg-opacity-50 text-yellow-500 border-yellow-500"
+      class="border p-2 w-full text-center rounded-xl text-2xl bg-red-900 bg-opacity-50 text-yellow-500 border-yellow-500"
       on:click={() => {
         mngr.encounter();
       }}>Encounter</button

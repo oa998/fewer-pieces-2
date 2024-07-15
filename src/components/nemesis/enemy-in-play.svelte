@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import Modal from "$components/modal.svelte";
   import {
     type GameState,
@@ -21,7 +22,7 @@
   {#if enemy}
     <div class="relative">
       <img
-        src={`/nemesis/${enemy.src}`}
+        src={`${base}/nemesis/${enemy.src}`}
         alt={enemy.name}
         class="rounded-full"
         style={`box-shadow: 0 0 35px ${enemy.color}, 0 0 20px ${enemy.color};`}
@@ -45,7 +46,7 @@
   >
     <div class="relative">
       <img
-        src={`/nemesis/${enemy.src}`}
+        src={`${base}/nemesis/${enemy.src}`}
         alt={enemy.name}
         class="rounded-full max-w-[200px]"
         style={`box-shadow: 0 0 35px ${enemy.color}, 0 0 20px ${enemy.color};`}

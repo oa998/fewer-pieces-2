@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from "$app/paths";
   import {
     DevelopmentRules,
     getStateManager,
@@ -15,7 +16,7 @@
     <div class="max-w-48">
       <div class="relative">
         <img
-          src={`/nemesis/${develop.src}`}
+          src={`${base}/nemesis/${develop.src}`}
           alt={develop.name}
           class="rounded-full"
         />
