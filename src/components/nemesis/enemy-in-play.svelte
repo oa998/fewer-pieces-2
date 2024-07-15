@@ -15,7 +15,10 @@
   const mngr = getStateManager();
 </script>
 
-<button class="p-4 rounded-3xl w-[15vh]" onclick={() => (clicked = true)}>
+<button
+  class="p-4 rounded-3xl w-[15vh] max-h-[40px]"
+  onclick={() => (clicked = true)}
+>
   {#if enemy}
     <div class="relative">
       <img
