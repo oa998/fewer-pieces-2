@@ -21,16 +21,16 @@
           class="rounded-full"
         />
         <span
-          class="bg-yellow-300 rounded-full text-black absolute right-0 bottom-0 text-xl font-mono px-2 border border-yellow-700"
+          class="bg-yellow-300 rounded-full text-black absolute right-0 bottom-0 text-5xl font-mono px-2 border border-yellow-700"
           >{develop.threat}</span
         >
       </div>
     </div>
-    <div class="text-white text-center px-20 text-3xl">
+    <div class="text-white text-center px-20 text-xl">
       {DevelopmentRules[develop.name].message}
     </div>
     <button
-      class="absolute top-2 right-2 rounded-xl bg-red-700 text-white text-2xl p-2"
+      class="absolute top-2 right-2 rounded-xl bg-red-700 text-white text-3xl p-2"
       onclick={() => mngr.developEnd()}>Ｘ</button
     >
   </div>
