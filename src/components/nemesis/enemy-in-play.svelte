@@ -16,7 +16,7 @@
 </script>
 
 <button
-  class="p-4 rounded-3xl w-[15vh] max-h-[40px]"
+  class="p-4 rounded-3xl w-[15vh] max-h-[40px] max-w-[40px]"
   onclick={() => (clicked = true)}
 >
   {#if enemy}
@@ -24,7 +24,7 @@
       <img
         src={`${base}/nemesis/${enemy.src}`}
         alt={enemy.name}
-        class="rounded-full"
+        class="rounded-full aspect-square"
         style={`box-shadow: 0 0 35px ${enemy.color}, 0 0 20px ${enemy.color};`}
       />
       <span
