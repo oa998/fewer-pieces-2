@@ -9,51 +9,50 @@
   import ViewBag from "$components/nemesis/view-bag.svelte";
   import { setStateManager } from "$lib/NemesisGameState.svelte";
   const mngr = setStateManager();
-  let screenWidth = 0;
-  $: imgHeight = Math.floor(screenWidth / 1.87); // image aspect ratio
 </script>
 
 <div
-  class="bg-svg h-[100lvh] w-full overflow-y-scroll"
-  bind:clientWidth={screenWidth}
+  class="bg-svg h-[100lvh] w-full overflow-y-scroll landscape:grid landscape:grid-cols-2"
 >
   <div class="relative">
     <img
       src={`${base}/nemesis/nemesis2.webp`}
       alt="nemesis"
-      class={`w-full object-cover h-[15lvh]`}
+      class={`w-full object-cover object-top h-[25lvh] landscape:w-full landscape:h-auto`}
     />
+    <div class="flex flex-col gap-2 absolute top-2 right-2">
+      <NewGame
+        class="bg-black-900 text-pink-300 border-pink-300 border py-1 px-3 rounded text-xs"
+      />
+      <ViewBag
+        class="bg-black-900 text-white border-gray-500 border py-1 px-3 rounded text-xs"
+      />
+      <Log
+        class="bg-black-900 text-white border-gray-500 border py-1 px-3 rounded text-xs"
+      />
+    </div>
+    <div class="w-full p-10 gap-10 flex flex-col">
+      <button
+        disabled={mngr.gs.developing.length > 0}
+        class="border p-2 w-full text-center rounded-xl text-2xl bg-blue-900 bg-opacity-50 text-yellow-500 border-yellow-500 disabled:brightness-50"
+        on:click={() => {
+          mngr.develop();
+        }}>Develop</button
+      >
+      <button
+        class="border p-2 w-full text-center rounded-xl text-2xl bg-red-900 bg-opacity-50 text-yellow-500 border-yellow-500"
+        on:click={() => {
+          mngr.encounter();
+        }}>Encounter</button
+      >
+    </div>
   </div>
 
-  <div class="flex flex-col gap-2 absolute top-2 right-2">
-    <NewGame
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-xs"
-    />
-    <ViewBag
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-xs"
-    />
-    <Log
-      class="bg-black-900 text-white border-gray-500 border py-1 px-2 rounded text-xs"
-    />
-  </div>
-  <div class="w-full p-10 gap-10 flex flex-col">
-    <button
-      disabled={mngr.gs.developing.length > 0}
-      class="border p-2 w-full text-center rounded-xl text-2xl bg-blue-900 bg-opacity-50 text-yellow-500 border-yellow-500 disabled:brightness-50"
-      on:click={() => {
-        mngr.develop();
-      }}>Develop</button
-    >
-    {#if mngr.gs.developing.length}
+  {#if mngr.gs.developing.length}
+    <div class="p-4">
       <Develop />
-    {/if}
-    <button
-      class="border p-2 w-full text-center rounded-xl text-2xl bg-red-900 bg-opacity-50 text-yellow-500 border-yellow-500"
-      on:click={() => {
-        mngr.encounter();
-      }}>Encounter</button
-    >
-  </div>
+    </div>
+  {/if}
 
   <Modal
     isOpen={mngr.gs.encounter.length > 0}
@@ -64,7 +63,7 @@
 
   <div
     class:py-4={mngr.gs.inPlay.length > 0}
-    class="fixed bottom-0 left-0 w-full flex flex-row overflow-y-scroll gap-2 bg-red-500 bg-opacity-20"
+    class="fixed bottom-0 left-0 w-full flex flex-row overflow-y-scroll px-8 gap-8 bg-red-500 bg-opacity-20"
   >
     {#each mngr.gs.inPlay as intruder}
       <EnemyInPlay enemy={intruder} />

@@ -63,7 +63,8 @@
 </script>
 
 <button class={`text-white bg-black ${clazz}`} onclick={() => (clicked = true)}
-  >View Bag</button
+  >View Bag - <span class="font-bold">{mngr.gs.inBag?.length || 0}</span
+  ></button
 >
 
 <Modal
