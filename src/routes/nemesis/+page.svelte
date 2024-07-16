@@ -31,7 +31,7 @@
         class="bg-black-900 text-white border-gray-500 border py-1 px-3 rounded text-xs"
       />
     </div>
-    <div class="w-full p-10 gap-10 flex flex-col">
+    <div class="w-full p-5 gap-10 flex flex-row">
       <button
         disabled={mngr.gs.developing.length > 0}
         class="border p-2 w-full text-center rounded-xl text-2xl bg-blue-900 bg-opacity-50 text-yellow-500 border-yellow-500 disabled:brightness-50"
