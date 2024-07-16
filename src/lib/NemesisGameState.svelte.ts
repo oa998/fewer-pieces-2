@@ -1,8 +1,6 @@
 import { browser } from "$app/environment";
 import { getContext, setContext } from "svelte";
 
-const version = 33;
-
 export type IntruderToken = {
   name: string;
   threat: number;
@@ -11,6 +9,85 @@ export type IntruderToken = {
   id: string;
   rotation: number;
 };
+
+export type Objective = { options: string[]; completed: boolean };
+export const objectives: Objective[] = [
+  {
+    options: ["At least 2 intruder weaknesses must be discovered."],
+    completed: false,
+  },
+  {
+    options: ["Send the Signal and all Rooms must be discoverd."],
+    completed: false,
+  },
+  {
+    options: [
+      "The ship must reach Mars.",
+      "The ship must reach Earth and the Nest must be destroyed.",
+    ],
+    completed: false,
+  },
+  {
+    options: ["Two players must survive."],
+    completed: false,
+  },
+  {
+    options: [
+      "Send the Signal and the Nest must be destroyed.",
+      "Send the Signal and the Ship must be destroyed.",
+    ],
+    completed: false,
+  },
+  {
+    options: [
+      "Sing the Signal and kill the Queen.",
+      "Send the Signal and the Ship must be destroyed.",
+    ],
+    completed: false,
+  },
+  {
+    options: ["The ship must reach Earth."],
+    completed: false,
+  },
+  {
+    options: ["Place the blue Character Corpse token to the Surgery Room."],
+    completed: false,
+  },
+  {
+    options: ["Discover the Intruder Egg weakness."],
+    completed: false,
+  },
+  {
+    options: ["Send the Signal and discover the Intruder Carcass weakness."],
+    completed: false,
+  },
+  {
+    options: [
+      "Send the Signal and a player must escape in a Pod or Hibernation with the blue Character Corpse token.",
+    ],
+    completed: false,
+  },
+  {
+    options: [
+      "Send the Signal and a player must finish the game in a Pod or Hibernation with an Intruder Egg token.",
+    ],
+    completed: false,
+  },
+  {
+    options: [
+      "A player must finish the game in a Pod or Hibernation with an Intruder Egg token.",
+    ],
+    completed: false,
+  },
+  {
+    options: ["Discover at least 2 Intruder Weaknesses."],
+    completed: false,
+  },
+  {
+    options: ["A player must survive the journey to earth, slimed."],
+    completed: false,
+  },
+];
 
 export type GameState = {
   players: 1 | 2 | 3 | 4 | 5;
@@ -23,9 +100,9 @@ export type GameState = {
   remainingTokens: IntruderToken[];
   dead: IntruderToken[];
   log: string[];
+  objectives: Objective[];
   logsOpen: boolean;
   startNewGame: boolean;
-  version: number;
 };
 
 export const Intruders = {
@@ -170,7 +247,7 @@ export function putRandomIntruderIntoRemaining(state: GameState, name: string) {
   return state;
 }
 
-export const newGame = (players: GameState["players"] = 3) => {
+export const newGame = (players: GameState["players"] = 4) => {
   const allIntruders = resetAllIntruders();
   const startingCounts = {
     [Intruders.BLANK]: 1,
@@ -180,6 +257,9 @@ export const newGame = (players: GameState["players"] = 3) => {
     [Intruders.BREEDER]: 0,
     [Intruders.QUEEN]: 1,
   };
+  const copy = [...objectives];
+  const startingObjectives = [];
+  for (let i = 0; i < players; i++) startingObjectives.push(copy.popRandom());
 
   const newState: GameState = {
     players,
@@ -192,7 +272,7 @@ export const newGame = (players: GameState["players"] = 3) => {
     log: [],
     logsOpen: false,
     startNewGame: true,
-    version,
+    objectives: startingObjectives,
   };
 
   for (const intruder of Object.keys(startingCounts)) {
@@ -307,16 +387,6 @@ class StateManager {
 
   get gs() {
     return this.#gameState;
-  }
-
-  get version() {
-    return this.#gameState?.version;
-  }
-
-  @storeLocalNemesis()
-  v() {
-    this.#gameState.startNewGame = !this.#gameState?.startNewGame;
-    this.#gameState.version = Math.floor(Math.random() * 9e9);
   }
 
   @storeLocalNemesis()

@@ -6,6 +6,7 @@
   import EnemyInPlay from "$components/nemesis/enemy-in-play.svelte";
   import Log from "$components/nemesis/log.svelte";
   import NewGame from "$components/nemesis/new-game.svelte";
+  import Objective from "$components/nemesis/objective.svelte";
   import ViewBag from "$components/nemesis/view-bag.svelte";
   import { setStateManager } from "$lib/NemesisGameState.svelte";
   const mngr = setStateManager();
@@ -61,13 +62,26 @@
     <Encounter encounter={mngr.gs.encounter[0]} />
   </Modal>
 
-  <div
-    class:py-4={mngr.gs.inPlay.length > 0}
-    class="fixed bottom-0 left-0 w-full flex flex-row overflow-y-scroll px-8 gap-8 bg-red-500 bg-opacity-20"
-  >
-    {#each mngr.gs.inPlay as intruder}
-      <EnemyInPlay enemy={intruder} />
-    {/each}
+  <div class="fixed bottom-0 left-0 w-full flex flex-col gap-4">
+    <span class="text-white w-full border-b border-gray-400 pl-12 bold-font"
+      >Objectives</span
+    >
+    <div
+      class="w-full flex flex-row overflow-y-scroll px-8 gap-8 justify-center"
+    >
+      {#each mngr.gs.objectives as o}
+        <Objective objective={o} />
+      {/each}
+    </div>
+
+    <div
+      class:py-4={mngr.gs.inPlay.length > 0}
+      class="w-full flex flex-row overflow-y-scroll px-8 gap-8 bg-red-500 bg-opacity-20"
+    >
+      {#each mngr.gs.inPlay as intruder}
+        <EnemyInPlay enemy={intruder} />
+      {/each}
+    </div>
   </div>
 </div>
 
@@ -82,5 +96,10 @@
     font-family: "Turret Road", sans-serif;
     font-weight: 300;
     font-style: normal;
+  }
+
+  .bold-font {
+    font-family: "Turret Road", sans-serif;
+    font-weight: 600;
   }
 </style>
