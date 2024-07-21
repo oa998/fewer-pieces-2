@@ -208,7 +208,7 @@ export function putRandomSeederIntoRemaining(state: GameState) {
   GREEN_PLAYER: "GREEN_PLAYER",
   RED_PLAYER: "RED_PLAYER",*/
 
-type PlayerToken =
+export type PlayerToken =
   | TokenKeys.BLUE_PLAYER
   | TokenKeys.ORANGE_PLAYER
   | TokenKeys.WHITE_PLAYER

@@ -166,3 +166,9 @@
     </div>
   {/if}
 </Modal>
+
+<style lang="postcss">
+  .orange-text {
+    color: rgb(255, 141, 18);
+  }
+</style>

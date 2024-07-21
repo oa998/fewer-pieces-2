@@ -17,11 +17,18 @@
   class="bg-svg h-[100lvh] w-full overflow-y-scroll landscape:grid landscape:grid-cols-2"
 >
   <div class="relative">
-    <img
-      src={`${base}/nemesis/nemesis2.webp`}
-      alt="nemesis"
-      class={`w-full object-cover object-top h-[25lvh] landscape:w-full landscape:h-auto`}
-    />
+    <div class="relative">
+      <img
+        src={`${base}/nemesis/void_title.jpg`}
+        alt="nemesis"
+        class={`w-full object-cover max-h-[30lvh] landscape:max-h-[40lvh] landscape:w-full landscape:h-auto`}
+      />
+      <div
+        class="text-center font-extralight text-5xl landscape:text-4xl text-slate-500 w-full absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        V O I D S E E D E R S
+      </div>
+    </div>
     <div class="flex flex-col gap-2 absolute top-2 right-2">
       <NewGameSeeders
         class="bg-black-900 text-pink-300 border-pink-300 border py-1 px-3 rounded text-xs"
