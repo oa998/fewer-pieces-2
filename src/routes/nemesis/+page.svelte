@@ -21,6 +21,11 @@
       alt="nemesis"
       class={`w-full object-cover object-top h-[25lvh] landscape:w-full landscape:h-auto`}
     />
+    <a
+      href={`${base}/nemesis/void-seeders`}
+      class="bg-black-900 text-pink-300 border-pink-300 border py-1 px-3 rounded text-xs absolute left-2 top-2"
+      >Void Seeders</a
+    >
     <div class="flex flex-col gap-2 absolute top-2 right-2">
       <NewGame
         class="bg-black-900 text-pink-300 border-pink-300 border py-1 px-3 rounded text-xs"

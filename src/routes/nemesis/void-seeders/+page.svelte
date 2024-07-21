@@ -29,6 +29,11 @@
         V O I D S E E D E R S
       </div>
     </div>
+    <a
+      href={`${base}/nemesis`}
+      class="bg-black-900 text-pink-300 border-pink-300 border py-1 px-3 rounded text-xs absolute left-2 top-2"
+      >Base Game</a
+    >
     <div class="flex flex-col gap-2 absolute top-2 right-2">
       <NewGameSeeders
         class="bg-black-900 text-pink-300 border-pink-300 border py-1 px-3 rounded text-xs"
