@@ -30,6 +30,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@iconify/svelte": "^4.0.2",
 		"@sveltejs/adapter-static": "^3.0.2"
 	}
 }

@@ -4,7 +4,7 @@
   import {
     type GameState,
     getStateManager,
-  } from "$lib/NemesisGameState.svelte";
+  } from "$lib/VoidSeedersGameState.svelte";
 
   type Props = {
     enemy: GameState["inPlay"][number];
@@ -13,6 +13,13 @@
   let { enemy }: Props = $props();
   let clicked = $state(false);
   const mngr = getStateManager();
+
+  const images = {
+    ["Despoiler"]: `${base}/nemesis/QueenOfficial.webp`,
+    ["Stalker"]: `${base}/nemesis/BreederOfficial.webp`,
+    ["Whisperer"]: `${base}/nemesis/AdultOfficial.webp`,
+    ["Lurker"]: `${base}/nemesis/CreeperOfficial.webp`,
+  };
 </script>
 
 <button
@@ -22,11 +29,17 @@
   {#if enemy}
     <div class="relative">
       <img
-        src={`${base}/nemesis/${enemy.src}`}
+        src={enemy.image}
         alt={enemy.name}
         class="rounded-full aspect-square"
         style={`box-shadow: 0 0 35px ${enemy.color}, 0 0 20px ${enemy.color};`}
       />
+      {#if enemy.image.includes("Blank")}
+        <span
+          class="rounded-full text-yellow-200 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-mono font-bold px-2"
+          >{enemy.threat}</span
+        >
+      {/if}
       <span
         class="bg-red-800 rounded-full text-white absolute right-0 bottom-0 text-2xl font-mono px-2 border border-red-500"
         >{enemy.damage}</span
@@ -46,17 +59,23 @@
     style="border-style:ridge;"
   >
     <div class="flex flex-row gap-24">
-      <div class="relative">
+      <div class="relative h-min">
         <img
-          src={`${base}/nemesis/${enemy.src}`}
+          src={enemy.image}
           alt={enemy.name}
           class="rounded-full max-w-[15vw]"
           style={`box-shadow: 0 0 35px ${enemy.color}, 0 0 20px ${enemy.color};`}
         />
-        <span
+        {#if enemy.image.includes("Blank")}
+          <span
+            class="rounded-full text-yellow-200 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-8xl font-mono font-bold px-2"
+            >{enemy.threat}</span
+          >
+        {/if}
+        <!-- <span
           class="bg-red-800 rounded-full text-white absolute right-0 bottom-0 text-3xl font-mono py-2 px-4 border border-red-500"
           >{enemy.damage}</span
-        >
+        > -->
       </div>
       <div class="flex flex-col items-center">
         <div class="flex flex-row gap-10 items-center">
@@ -86,6 +105,17 @@
             ></button>
           {/each}
         </div>
+        <hr class="w-full border-gray-400 my-6" />
+
+        <div>Description:</div>
+        <div class="flex flex-col w-fit gap-1">
+          {#each ["Despoiler", "Stalker", "Whisperer", "Lurker"] as s}
+            <button
+              class="border border-gray-700 rounded px-8 bg-slate-900"
+              onclick={() => mngr.setImage(enemy.id, images[s])}>{s}</button
+            >
+          {/each}
+        </div>
       </div>
     </div>
     <hr class="w-full border-gray-400 my-6" />
@@ -107,7 +137,6 @@
       }}
     >
       <div class="">Kill</div>
-      <div class="text-sm italic text-red-200">remove from game</div>
     </button>
   </div>
 </Modal>

@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify/svelte': ^4.0.2
   '@sveltejs/adapter-auto': ^3.0.0
   '@sveltejs/adapter-static': ^3.0.2
   '@sveltejs/kit': ^2.0.0
@@ -20,6 +21,7 @@ specifiers:
   vite: ^5.0.3
 
 dependencies:
+  '@iconify/svelte': 4.0.2_svelte@5.0.0-next.183
   '@sveltejs/adapter-static': 3.0.2_@sveltejs+kit@2.5.18
 
 devDependencies:
@@ -300,6 +302,19 @@ packages:
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
     dev: true
+
+  /@iconify/svelte/4.0.2_svelte@5.0.0-next.183:
+    resolution: {integrity: sha512-6BSrU85FzGfhQD3bTXpnkCCvBAglEt8T9QednVnXAYm4C+d3464y+pYMzhQNJm5mPId2cuiw+2wXlDflXllHDw==}
+    peerDependencies:
+      svelte: '>4.0.0'
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 5.0.0-next.183
+    dev: false
+
+  /@iconify/types/2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
+    dev: false
 
   /@isaacs/cliui/8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
