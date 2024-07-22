@@ -439,7 +439,7 @@ class StateManager {
     const token = this.#gameState.encounter.pop()!;
     this.captureLog(
       `Encounter: ${token.name} (threat: ${token.threat}). ${
-        EncounterMessages[token.name]
+        EncounterMessages[token.name].message
       }`
     );
     if (token.name == TokenKeys.SEEDER) {
@@ -511,15 +511,15 @@ class StateManager {
 
   @storeLocalNemesis()
   returnToBag(tokenId: string) {
-    if (this.#gameState.inPlay.length === 0) return;
-    const index = this.#gameState.inPlay.findIndex((i) => i.id === tokenId);
-    if (index < 0) return;
-    const token = this.#gameState.inPlay[index];
+    const token = this.#gameState.inPlay.find((t) => t.id == tokenId);
+    if (!token) return;
     this.captureLog(`Returned ${token.name} to bag.`);
     token.damage = 0;
-    this.#gameState.inPlay.splice(index, 1);
-    this.#gameState.inBag.push(token);
-    return this.#gameState;
+    this.#gameState.inPlay = this.#gameState.inPlay.filter(
+      (t) => t.id != tokenId
+    );
+    this.#gameState.remainingTokens.push(token);
+    this.#gameState = putRandomSeederIntoBag(this.#gameState);
   }
 
   @storeLocalNemesis()
