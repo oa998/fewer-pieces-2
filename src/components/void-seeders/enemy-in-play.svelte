@@ -55,7 +55,7 @@
   }}
 >
   <div
-    class="flex flex-col gap-3 bg-black text-white text-xl py-6 items-center rounded-xl w-full px-20 border-red-950 border-[28px]"
+    class="flex flex-col gap-3 bg-black text-white text-xl py-4 items-center rounded-xl w-full px-20 border-red-950 border-[28px]"
     style="border-style:ridge;"
   >
     <div class="flex flex-row gap-24">
@@ -72,10 +72,10 @@
             >{enemy.threat}</span
           >
         {/if}
-        <!-- <span
+        <span
           class="bg-red-800 rounded-full text-white absolute right-0 bottom-0 text-3xl font-mono py-2 px-4 border border-red-500"
           >{enemy.damage}</span
-        > -->
+        >
       </div>
       <div class="flex flex-col items-center">
         <div class="flex flex-row gap-10 items-center">
@@ -130,7 +130,7 @@
     </button>
 
     <button
-      class="w-full rounded-xl border-2 border-red-800 bg-slate-900 text-3xl p-4"
+      class="w-full rounded-xl border-2 border-red-600 bg-red-950 text-3xl p-4"
       onclick={() => {
         mngr.kill(enemy.id);
         clicked = false; // close

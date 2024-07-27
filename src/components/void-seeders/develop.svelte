@@ -28,14 +28,27 @@
             >{develop.threat}</span
           >
         {/if}
-        {#if develop.name.includes("PLAYER")}
+        {#if !develop.name.includes("SEEDER") && !develop.name.includes("BLANK")}
           <span
-            class:text-blue-600={develop.name == TokenKeys.BLUE_PLAYER}
-            class:text-lime-500={develop.name == TokenKeys.GREEN_PLAYER}
-            class:text-red-600={develop.name == TokenKeys.RED_PLAYER}
-            class:text-white={develop.name == TokenKeys.WHITE_PLAYER}
-            class:text-violet-700={develop.name == TokenKeys.PURPLE_PLAYER}
-            class:orange-text={develop.name == TokenKeys.ORANGE_PLAYER}
+            class:text-blue-600={[TokenKeys.CAPTAIN, TokenKeys.CEO].includes(
+              develop.name
+            )}
+            class:text-lime-500={[TokenKeys.PILOT, TokenKeys.ANDROID].includes(
+              develop.name
+            )}
+            class:text-red-600={[TokenKeys.SOLDIER, TokenKeys.CONVICT].includes(
+              develop.name
+            )}
+            class:text-white={[
+              TokenKeys.SCIENTIST,
+              TokenKeys.PSYCHOLOGIST,
+            ].includes(develop.name)}
+            class:text-violet-700={develop.name == TokenKeys.SCOUT}
+            class:text-pink-400={develop.name == TokenKeys.MEDIC}
+            class:orange-text={[
+              TokenKeys.MECHANIC,
+              TokenKeys.BOUNTY_HUNGER,
+            ].includes(develop.name)}
           >
             <Icon
               icon="game-icons:astronaut-helmet"
@@ -56,10 +69,6 @@
 {/if}
 
 <style lang="postcss">
-  .grid-cols-sizing {
-    grid-template-columns: min-content 1fr;
-    background-color: orange;
-  }
   .orange-text {
     color: rgb(255, 141, 18);
   }

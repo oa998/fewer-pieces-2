@@ -43,10 +43,13 @@
   });
 </script>
 
-<dialog open={isOpen} class={`mt-1/2 ${clazz}`} bind:this={dialogRef} on:close>
-  <div class={`p-5`}>
-    <slot />
-  </div>
+<dialog
+  open={isOpen}
+  class={`mt-1/2 scale-75 ${clazz}`}
+  bind:this={dialogRef}
+  on:close
+>
+  <slot />
 </dialog>
 
 <style lang="postcss">

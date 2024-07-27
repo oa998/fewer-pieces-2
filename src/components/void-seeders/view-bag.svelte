@@ -39,12 +39,18 @@
   const displayOrder = [
     TokenKeys.BLANK,
     TokenKeys.SEEDER,
-    TokenKeys.BLUE_PLAYER,
-    TokenKeys.GREEN_PLAYER,
-    TokenKeys.RED_PLAYER,
-    TokenKeys.WHITE_PLAYER,
-    TokenKeys.ORANGE_PLAYER,
-    TokenKeys.PURPLE_PLAYER,
+    TokenKeys.CONVICT,
+    TokenKeys.BOUNTY_HUNGER,
+    TokenKeys.CEO,
+    TokenKeys.ANDROID,
+    TokenKeys.PSYCHOLOGIST,
+    TokenKeys.MEDIC,
+    TokenKeys.SCIENTIST,
+    TokenKeys.MECHANIC,
+    TokenKeys.CAPTAIN,
+    TokenKeys.SCOUT,
+    TokenKeys.SOLDIER,
+    TokenKeys.PILOT,
   ];
 
   function ordered<T>(map: Record<TokenKeys, T>): [key: TokenKeys, value: T][] {
@@ -91,18 +97,34 @@
                 />
                 {#if name == TokenKeys.SEEDER}
                   <span
-                    class="rounded-full text-yellow-200 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-mono font-bold px-2"
-                    >X</span
+                    class="rounded-full text-yellow-200 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-mono font-bolder px-2"
+                    >⛌</span
                   >
                 {/if}
-                {#if name.includes("PLAYER")}
+                {#if !name.includes("SEEDER") && !name.includes("BLANK")}
                   <span
-                    class:text-blue-600={name == TokenKeys.BLUE_PLAYER}
-                    class:text-lime-500={name == TokenKeys.GREEN_PLAYER}
-                    class:text-red-600={name == TokenKeys.RED_PLAYER}
-                    class:text-white={name == TokenKeys.WHITE_PLAYER}
-                    class:text-violet-700={name == TokenKeys.PURPLE_PLAYER}
-                    class:orange-text={name == TokenKeys.ORANGE_PLAYER}
+                    class:text-blue-600={[
+                      TokenKeys.CAPTAIN,
+                      TokenKeys.CEO,
+                    ].includes(name)}
+                    class:text-lime-500={[
+                      TokenKeys.PILOT,
+                      TokenKeys.ANDROID,
+                    ].includes(name)}
+                    class:text-red-600={[
+                      TokenKeys.SOLDIER,
+                      TokenKeys.CONVICT,
+                    ].includes(name)}
+                    class:text-white={[
+                      TokenKeys.SCIENTIST,
+                      TokenKeys.PSYCHOLOGIST,
+                    ].includes(name)}
+                    class:text-violet-700={name == TokenKeys.SCOUT}
+                    class:text-pink-400={name == TokenKeys.MEDIC}
+                    class:orange-text={[
+                      TokenKeys.MECHANIC,
+                      TokenKeys.BOUNTY_HUNGER,
+                    ].includes(name)}
                   >
                     <Icon
                       icon="game-icons:astronaut-helmet"
@@ -137,8 +159,8 @@
                 />
                 {#if name == TokenKeys.SEEDER}
                   <span
-                    class="rounded-full text-yellow-200 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-mono font-bold px-2"
-                    >X</span
+                    class="rounded-full text-yellow-200 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-5xl font-mono font-bolder px-2"
+                    >⛌</span
                   >
                 {/if}
                 {#if name.includes("PLAYER")}

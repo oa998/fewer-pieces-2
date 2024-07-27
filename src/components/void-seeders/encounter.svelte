@@ -27,14 +27,27 @@
           >{encounter.threat}</span
         >
       {/if}
-      {#if encounter.name.includes("PLAYER")}
+      {#if !encounter.name.includes("SEEDER") && !encounter.name.includes("BLANK")}
         <span
-          class:text-blue-600={encounter.name == TokenKeys.BLUE_PLAYER}
-          class:text-lime-500={encounter.name == TokenKeys.GREEN_PLAYER}
-          class:text-red-600={encounter.name == TokenKeys.RED_PLAYER}
-          class:text-white={encounter.name == TokenKeys.WHITE_PLAYER}
-          class:text-violet-700={encounter.name == TokenKeys.PURPLE_PLAYER}
-          class:orange-text={encounter.name == TokenKeys.ORANGE_PLAYER}
+          class:text-blue-600={[TokenKeys.CAPTAIN, TokenKeys.CEO].includes(
+            encounter.name
+          )}
+          class:text-lime-500={[TokenKeys.PILOT, TokenKeys.ANDROID].includes(
+            encounter.name
+          )}
+          class:text-red-600={[TokenKeys.SOLDIER, TokenKeys.CONVICT].includes(
+            encounter.name
+          )}
+          class:text-white={[
+            TokenKeys.SCIENTIST,
+            TokenKeys.PSYCHOLOGIST,
+          ].includes(encounter.name)}
+          class:text-violet-700={encounter.name == TokenKeys.SCOUT}
+          class:text-pink-400={encounter.name == TokenKeys.MEDIC}
+          class:orange-text={[
+            TokenKeys.MECHANIC,
+            TokenKeys.BOUNTY_HUNGER,
+          ].includes(encounter.name)}
         >
           <Icon
             icon="game-icons:astronaut-helmet"

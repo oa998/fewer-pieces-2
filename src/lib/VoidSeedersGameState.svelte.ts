@@ -6,12 +6,18 @@ import { objectives, type Objective } from "./NemesisGameState.svelte";
 export enum TokenKeys {
   BLANK = "BLANK",
   SEEDER = "SEEDER",
-  BLUE_PLAYER = "BLUE_PLAYER",
-  ORANGE_PLAYER = "ORANGE_PLAYER",
-  WHITE_PLAYER = "WHITE_PLAYER",
-  PURPLE_PLAYER = "PURPLE_PLAYER",
-  GREEN_PLAYER = "GREEN_PLAYER",
-  RED_PLAYER = "RED_PLAYER",
+  SCIENTIST = "SCIENTIST",
+  MECHANIC = "MECHANIC",
+  CAPTAIN = "CAPTAIN",
+  SCOUT = "SCOUT",
+  PILOT = "PILOT",
+  SOLDIER = "SOLDIER",
+  CONVICT = "CONVICT",
+  BOUNTY_HUNGER = "BOUNTY_HUNGER",
+  CEO = "CEO",
+  ANDROID = "ANDROID",
+  PSYCHOLOGIST = "PSYCHOLOGIST",
+  MEDIC = "MEDIC",
 }
 
 export type SeederTokens = {
@@ -56,16 +62,20 @@ export const images = {
   [Seeders.BLANK]: "BlankOfficial.webp",
 };
 
-// const TokenKeys = {
-//   BLANK: "BLANK",
-//   SEEDER: "SEEDER",
-//   BLUE_PLAYER: "BLUE_PLAYER",
-//   ORANGE_PLAYER: "ORANGE_PLAYER",
-//   WHITE_PLAYER: "WHITE_PLAYER",
-//   PURPLE_PLAYER: "PURPLE_PLAYER",
-//   GREEN_PLAYER: "GREEN_PLAYER",
-//   RED_PLAYER: "RED_PLAYER",
-// }
+/*
+  SCIENTIST = "SCIENTIST",
+  MECHANIC = "MECHANIC",
+  CAPTAIN = "CAPTAIN",
+  SCOUT = "SCOUT",
+  PILOT = "PILOT",
+  SOLDIER = "SOLDIER",
+  CONVICT = "CONVICT",
+  BOUNTY_HUNGER = "BOUNTY_HUNGER",
+  CEO = "CEO",
+  ANDROID = "ANDROID",
+  PSYCHOLOGIST = "PSYCHOLOGIST",  
+  MEDIC = "MEDIC",
+*/
 
 export const BagTokens = {};
 
@@ -88,37 +98,73 @@ const totalTokens = {
       tokens: 4,
     },
   ],
-  [TokenKeys.RED_PLAYER]: [
+  [TokenKeys.CONVICT]: [
     {
       threat: 0,
       tokens: 1,
     },
   ],
-  [TokenKeys.BLUE_PLAYER]: [
+  [TokenKeys.BOUNTY_HUNGER]: [
     {
       threat: 0,
       tokens: 1,
     },
   ],
-  [TokenKeys.GREEN_PLAYER]: [
+  [TokenKeys.CEO]: [
     {
       threat: 0,
       tokens: 1,
     },
   ],
-  [TokenKeys.WHITE_PLAYER]: [
+  [TokenKeys.ANDROID]: [
     {
       threat: 0,
       tokens: 1,
     },
   ],
-  [TokenKeys.PURPLE_PLAYER]: [
+  [TokenKeys.PSYCHOLOGIST]: [
     {
       threat: 0,
       tokens: 1,
     },
   ],
-  [TokenKeys.ORANGE_PLAYER]: [
+  [TokenKeys.MEDIC]: [
+    {
+      threat: 0,
+      tokens: 1,
+    },
+  ],
+  [TokenKeys.SCIENTIST]: [
+    {
+      threat: 0,
+      tokens: 1,
+    },
+  ],
+  [TokenKeys.MECHANIC]: [
+    {
+      threat: 0,
+      tokens: 1,
+    },
+  ],
+  [TokenKeys.CAPTAIN]: [
+    {
+      threat: 0,
+      tokens: 1,
+    },
+  ],
+  [TokenKeys.SCOUT]: [
+    {
+      threat: 0,
+      tokens: 1,
+    },
+  ],
+  [TokenKeys.SOLDIER]: [
+    {
+      threat: 0,
+      tokens: 1,
+    },
+  ],
+  [TokenKeys.PILOT]: [
     {
       threat: 0,
       tokens: 1,
@@ -201,20 +247,10 @@ export function putRandomSeederIntoRemaining(state: GameState) {
   return state;
 }
 
-/*  BLUE_PLAYER: "BLUE_PLAYER",
-  ORANGE_PLAYER: "ORANGE_PLAYER",
-  WHITE_PLAYER: "WHITE_PLAYER",
-  PURPLE_PLAYER: "PURPLE_PLAYER",
-  GREEN_PLAYER: "GREEN_PLAYER",
-  RED_PLAYER: "RED_PLAYER",*/
-
-export type PlayerToken =
-  | TokenKeys.BLUE_PLAYER
-  | TokenKeys.ORANGE_PLAYER
-  | TokenKeys.WHITE_PLAYER
-  | TokenKeys.PURPLE_PLAYER
-  | TokenKeys.GREEN_PLAYER
-  | TokenKeys.RED_PLAYER;
+export type PlayerToken = Exclude<
+  Exclude<TokenKeys, TokenKeys.BLANK>,
+  TokenKeys.SEEDER
+>;
 
 export const newGame = (players: PlayerToken[] = []) => {
   const allTokens = resetAllTokens([
@@ -285,48 +321,96 @@ export const DevelopmentRules: {
       return state;
     },
   },
-  [TokenKeys.BLUE_PLAYER]: {
-    message: `If the BLUE player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Blue player resolves a panic card.</span> Return this token to the bag.`,
+  [TokenKeys.ANDROID]: {
+    message: `If the Android player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Android player resolves a panic card.</span> Return this token to the bag.`,
     action: (state) => {
       const token = state.developing.pop() as SeederTokens;
       state.inBag.push(token);
       return state;
     },
   },
-  [TokenKeys.GREEN_PLAYER]: {
-    message: `If the GREEN player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Green player resolves a panic card.</span> Return this token to the bag.`,
+  [TokenKeys.BOUNTY_HUNGER]: {
+    message: `If the Bounty Hunter player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Bounty Hunter player resolves a panic card.</span> Return this token to the bag.`,
     action: (state) => {
       const token = state.developing.pop() as SeederTokens;
       state.inBag.push(token);
       return state;
     },
   },
-  [TokenKeys.WHITE_PLAYER]: {
-    message: `If the WHITE player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>White player resolves a panic card.</span> Return this token to the bag.`,
+  [TokenKeys.CAPTAIN]: {
+    message: `If the Captain player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Captain player resolves a panic card.</span> Return this token to the bag.`,
     action: (state) => {
       const token = state.developing.pop() as SeederTokens;
       state.inBag.push(token);
       return state;
     },
   },
-  [TokenKeys.ORANGE_PLAYER]: {
-    message: `If the ORANGE player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Orange player resolves a panic card.</span> Return this token to the bag.`,
+  [TokenKeys.CEO]: {
+    message: `If the CEO player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>CEO player resolves a panic card.</span> Return this token to the bag.`,
     action: (state) => {
       const token = state.developing.pop() as SeederTokens;
       state.inBag.push(token);
       return state;
     },
   },
-  [TokenKeys.RED_PLAYER]: {
-    message: `If the RED player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Red player resolves a panic card.</span> Return this token to the bag.`,
+  [TokenKeys.CONVICT]: {
+    message: `If the Convict player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Convict player resolves a panic card.</span> Return this token to the bag.`,
     action: (state) => {
       const token = state.developing.pop() as SeederTokens;
       state.inBag.push(token);
       return state;
     },
   },
-  [TokenKeys.PURPLE_PLAYER]: {
-    message: `If the PURPLE player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Purple player resolves a panic card.</span> Return this token to the bag.`,
+  [TokenKeys.MECHANIC]: {
+    message: `If the Mechanic player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Mechanic player resolves a panic card.</span> Return this token to the bag.`,
+    action: (state) => {
+      const token = state.developing.pop() as SeederTokens;
+      state.inBag.push(token);
+      return state;
+    },
+  },
+  [TokenKeys.MEDIC]: {
+    message: `If the Medic player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Medic player resolves a panic card.</span> Return this token to the bag.`,
+    action: (state) => {
+      const token = state.developing.pop() as SeederTokens;
+      state.inBag.push(token);
+      return state;
+    },
+  },
+  [TokenKeys.PILOT]: {
+    message: `If the Pilot player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Pilot player resolves a panic card.</span> Return this token to the bag.`,
+    action: (state) => {
+      const token = state.developing.pop() as SeederTokens;
+      state.inBag.push(token);
+      return state;
+    },
+  },
+  [TokenKeys.PSYCHOLOGIST]: {
+    message: `If the Psychologist player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Psychologist player resolves a panic card.</span> Return this token to the bag.`,
+    action: (state) => {
+      const token = state.developing.pop() as SeederTokens;
+      state.inBag.push(token);
+      return state;
+    },
+  },
+  [TokenKeys.SCIENTIST]: {
+    message: `If the Scientist player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Scientist player resolves a panic card.</span> Return this token to the bag.`,
+    action: (state) => {
+      const token = state.developing.pop() as SeederTokens;
+      state.inBag.push(token);
+      return state;
+    },
+  },
+  [TokenKeys.SCOUT]: {
+    message: `If the Scout player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Scout player resolves a panic card.</span> Return this token to the bag.`,
+    action: (state) => {
+      const token = state.developing.pop() as SeederTokens;
+      state.inBag.push(token);
+      return state;
+    },
+  },
+  [TokenKeys.SOLDIER]: {
+    message: `If the Soldier player is dead or escaped (pod/hybernating), remove this token from the bag and draw again. Otherwise, the <span class='font-bold underline'>Soldier player resolves a panic card.</span> Return this token to the bag.`,
     action: (state) => {
       const token = state.developing.pop() as SeederTokens;
       state.inBag.push(token);
@@ -344,27 +428,51 @@ export const EncounterMessages = {
     message:
       "Check the insanity level of the player that drew this. Put the corresponding Void Seeker into play. Check for a surprise attack.",
   },
-  [TokenKeys.BLUE_PLAYER]: {
+  [TokenKeys.ANDROID]: {
     message:
       "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
   },
-  [TokenKeys.ORANGE_PLAYER]: {
+  [TokenKeys.BOUNTY_HUNGER]: {
     message:
       "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
   },
-  [TokenKeys.WHITE_PLAYER]: {
+  [TokenKeys.CAPTAIN]: {
     message:
       "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
   },
-  [TokenKeys.PURPLE_PLAYER]: {
+  [TokenKeys.CEO]: {
     message:
       "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
   },
-  [TokenKeys.RED_PLAYER]: {
+  [TokenKeys.CONVICT]: {
     message:
       "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
   },
-  [TokenKeys.GREEN_PLAYER]: {
+  [TokenKeys.MECHANIC]: {
+    message:
+      "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
+  },
+  [TokenKeys.MEDIC]: {
+    message:
+      "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
+  },
+  [TokenKeys.PILOT]: {
+    message:
+      "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
+  },
+  [TokenKeys.PSYCHOLOGIST]: {
+    message:
+      "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
+  },
+  [TokenKeys.SCIENTIST]: {
+    message:
+      "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
+  },
+  [TokenKeys.SCOUT]: {
+    message:
+      "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
+  },
+  [TokenKeys.SOLDIER]: {
     message:
       "Place a <span class='font-bold underline'>noise marker in each corridor</span> connected to the room where this encounter took place. The player who drew this token (color ignored) <span class='font-bold underline'>resolves a Panic card</span>. Return this token to the bag.",
   },
@@ -390,7 +498,7 @@ function storeLocalNemesis() {
 }
 
 class StateManager {
-  #gameState = $state<GameState>(newGame([TokenKeys.GREEN_PLAYER]));
+  #gameState = $state<GameState>(newGame([TokenKeys.SOLDIER]));
 
   constructor() {
     if (browser && localStorage?.getItem("void_nemesis_game")) {

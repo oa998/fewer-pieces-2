@@ -36,7 +36,6 @@
         <button
           onclick={() => {
             mngr.newGame(c);
-            console.log(mngr.gs);
             clicked = false;
           }}
           class="border border-gray-500 p-4 aspect-square w-20">{c}</button
