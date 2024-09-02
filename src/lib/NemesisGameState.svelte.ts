@@ -13,6 +13,54 @@ export type IntruderToken = {
 export type Objective = { options: string[]; completed: boolean };
 export const objectives: Objective[] = [
   {
+    options: ["A surviving player must have a crafted item."],
+    completed: false,
+  },
+  {
+    options: ["A surviving player must have an egg object."],
+    completed: false,
+  },
+  {
+    options: ["A surviving player must have an intruder carcass object."],
+    completed: false,
+  },
+  {
+    options: ["A surviving player must have a character corpse object."],
+    completed: false,
+  },
+  {
+    options: ["A surviving player must have a crafted item."],
+    completed: false,
+  },
+  {
+    options: ["The self destruct sequence must be started."],
+    completed: false,
+  },
+  {
+    options: ["Attack an enemy with a crafted item."],
+    completed: false,
+  },
+  {
+    options: ["End the game with a malfunction marker in the hibernatorium."],
+    completed: false,
+  },
+  {
+    options: [
+      "A surviving player must have at least one item of each color: green, yellow, and red.",
+    ],
+    completed: false,
+  },
+  {
+    options: [
+      "A player must complete the game with 7 or more items. (Quest items must be activated to count.)",
+    ],
+    completed: false,
+  },
+  {
+    options: ["The ship must reach Earth", "Only one character can survive."],
+    completed: false,
+  },
+  {
     options: ["At least 2 intruder weaknesses must be discovered."],
     completed: false,
   },
@@ -40,7 +88,7 @@ export const objectives: Objective[] = [
   },
   {
     options: [
-      "Sing the Signal and kill the Queen.",
+      "Send the Signal and kill the Queen.",
       "Send the Signal and the Ship must be destroyed.",
     ],
     completed: false,
