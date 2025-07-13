@@ -1,0 +1,40 @@
+{
+  "name": "Nemesis",
+  "short_name": "Nemesis",
+  "description": "Nemesis",
+  "start_url": "/nemesis",
+  "display": "standalone",
+  "background_color": "#000",
+  "theme_color": "#285",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/nemesis/android-launchericon-72-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/nemesis/android-launchericon-96-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/nemesis/android-launchericon-144-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/nemesis/android-launchericon-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/nemesis/android-launchericon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["game"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
